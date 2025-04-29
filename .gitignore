@@ -1,0 +1,44 @@
+# Ignore build output
+/build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Ignore NetBeans specific files
+/nbproject/private/
+/nbproject/Makefile-*.mk
+/nbproject/Package-*.bash
+
+# Ignore classes generated from compilation
+/**/*.class
+
+# Ignore system files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignore IDE settings (optional)
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore library jars added manually
+/lib/
+
+# Ignore any database auth native files (for example, if sqljdbc_auth.dll is put somewhere)
+*.dll
+
+# Personal config
+*.env
+*.local
+
+# Ignore maven/gradle generated (if ever used later)
+target/
+out/
