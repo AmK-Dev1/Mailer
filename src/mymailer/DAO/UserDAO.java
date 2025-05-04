@@ -1,4 +1,4 @@
-package mymailer.dao;
+package mymailer.DAO;
 
 import mymailer.model.User;
 import mymailer.util.DataBase.IDbConnector;
@@ -18,7 +18,7 @@ public class UserDAO {
     // Authentication method
     public boolean login(String username, String password) {
         
-        String sqlQuery = "SELECT * FROM users WHERE username = ? AND password = ?";
+        String sqlQuery = "SELECT * FROM [user] WHERE username = ? AND password = ?";
           
         
         try (Connection conn = connector.connect();
@@ -29,7 +29,7 @@ public class UserDAO {
             
             ResultSet rs = stmt.executeQuery(); 
 
-            return rs.next(); // if a record exists, authentication successful
+            return rs.next(); 
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -39,7 +39,7 @@ public class UserDAO {
 
     // Add new user
     public boolean register(User user) {
-        String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        String sql = "INSERT INTO [user] (username, password) VALUES (?, ?)";
 
         try (Connection conn = connector.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -55,4 +55,30 @@ public class UserDAO {
             return false;
         }
     }
+    
+    public int getUserIdByEmail(String email) {
+        
+        String sql = "SELECT ID FROM [user] WHERE userName = ?";
+
+        try (Connection conn = connector.connect();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    // get the integer from the first column (or use the column name):
+                    return rs.getInt(1);
+                } else {
+                    // no user with that email
+                    return -1;
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // on error, also return -1 (or rethrow as unchecked, if you prefer)
+            return -1;
+        }
+    }
+    
 }

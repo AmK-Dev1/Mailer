@@ -13,7 +13,7 @@ import mymailer.util.DataBase.SqlServerConnector;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import mymailer.dao.UserDAO;
+import mymailer.DAO.UserDAO;
 import mymailer.view.LoginForm;
 
 
@@ -21,10 +21,10 @@ import mymailer.view.LoginForm;
 public class MyMailer {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            IDbConnector connector = new SqlServerConnector("AMK", "Mailer");
+            IDbConnector connector = new SqlServerConnector("AMK", "MyMailer");
 
             MainView mainView = new MainView();
-            LoginForm loginForm = new LoginForm(connector);
+            LoginForm loginForm = new LoginForm(connector, mainView);
 
             mainView.setView(loginForm);
             mainView.setVisible(true);

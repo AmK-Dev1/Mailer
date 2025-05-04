@@ -4,23 +4,31 @@
  */
 package mymailer.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import mymailer.model.Contact;
+import mymailer.util.DataBase.IDbConnector;
+import mymailer.util.SessionManager;
+import mymailer.util.DataBase.IDbConnector;
+import mymailer.DAO.ContactDAO;
 
 public class ContactController {
     
-    private List<Contact> contacts;
+    private final ContactDAO dao;
 
-    public ContactController() {
-        contacts = new ArrayList<>();
+    public ContactController(IDbConnector connector) {
+        this.dao = new ContactDAO(connector);
     }
+
     
-    public void addContact(Contact contact){
-        contacts.add(contact);
-    }
-
-    public List<Contact> getContacts(){
-        return contacts;
+    public int getContactCount() {
+        try {
+            int userID = SessionManager.getInstance().getCurrentUserID();
+            return dao.countByUser(userID);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return 0;
+        }
     }
 }
