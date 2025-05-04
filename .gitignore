@@ -16,7 +16,6 @@ nbdist/
 # Ignore system files
 *.log
 *.tmp
-*.bak
 *.swp
 
 # Ignore IDE settings (optional)
