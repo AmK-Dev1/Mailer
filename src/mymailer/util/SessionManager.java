@@ -5,6 +5,7 @@
 package mymailer.util;
 
 import mymailer.model.User;
+import mymailer.util.EmailService.IEmailService;
 
 /**
  *
@@ -12,7 +13,9 @@ import mymailer.model.User;
  */
 public class SessionManager {
     private static final SessionManager INSTANCE = new SessionManager();
+    
     private int currentUserID;
+    private IEmailService emailService;
 
     private SessionManager() { }
 
@@ -28,6 +31,13 @@ public class SessionManager {
     /** Returns the logged-in User object, or null if not set */
     public int getCurrentUserID() {
         return currentUserID;
+    }
+    
+    public void setEmailService(IEmailService svc) {
+        this.emailService = svc;
+    }
+    public IEmailService getEmailService() {
+        return emailService;
     }
 
 }

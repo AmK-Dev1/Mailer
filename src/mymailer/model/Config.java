@@ -2,7 +2,7 @@ package mymailer.model;
 
 import java.time.LocalDateTime;
 
-public class EmailConfig {
+public class Config {
     private int             userID;
     private String          smtpHost;
     private int             smtpPort;
@@ -11,9 +11,9 @@ public class EmailConfig {
     private boolean         useSSL;
     private LocalDateTime   updatedAt;
 
-    public EmailConfig() { }
+    public Config() { }
 
-    public EmailConfig(int userID, String smtpHost, int smtpPort,
+    public Config(int userID, String smtpHost, int smtpPort,
                        String username, String appPassword, boolean useSSL,
                        LocalDateTime updatedAt) {
         this.userID      = userID;

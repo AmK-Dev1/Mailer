@@ -11,5 +11,8 @@ then put it in : C:programfiles\JDK{version}\bin
 
 if the connection fails, 
 1) go to SQL Server Configuration mannager
+
 2) enable TCP/IP 
+
 3) restart " SQLServer(MSSQLSERVER) " from (services)
+4) Enable javax.mail in bibs (netbeans)

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package mymailer;
 
 import javax.swing.SwingUtilities;
@@ -13,7 +9,11 @@ import mymailer.util.DataBase.SqlServerConnector;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import mymailer.DAO.ContactDAO;
 import mymailer.DAO.UserDAO;
+import mymailer.util.EmailService.GmailEmailService;
+import mymailer.util.EmailService.IEmailService;
+import mymailer.util.SessionManager;
 import mymailer.view.LoginForm;
 
 
@@ -25,13 +25,9 @@ public class MyMailer {
 
             MainView mainView = new MainView();
             LoginForm loginForm = new LoginForm(connector, mainView);
-
+           
             mainView.setView(loginForm);
             mainView.setVisible(true);
-
         });
     }
 }
-
-
-
